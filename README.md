@@ -18,3 +18,10 @@ pip install -r requirements.txt
 ```bash
 main.py 
 ```
+
+[Postman collection](https://www.postman.com/security-operator-14212269/spy-cat-agency/overview)
+
+Bugs:
+
+- Targets are not shown at the endpoint for all missions.
+- Target status is updated but not shown in the response when updating target status.

@@ -38,7 +38,7 @@ class CatService:
         return self.__check_existing(uuid_=cat_uuid)
 
     def delete_cat(self, cat_uuid: uuid.UUID):
-        self.__check_existing()
+        self.__check_existing(uuid_=cat_uuid)
         return self.repo.delete_instance(uuid_=cat_uuid)
 
     def update_cat(self, cat_uuid: uuid.UUID, new_data: dict):

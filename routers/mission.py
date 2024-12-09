@@ -36,7 +36,7 @@ def get_all_missions(service: MissionService = Depends(get_mission_service)):
     )
 
 
-@missions_router.get("/{uuid_}/", response_model=MissionReadSchema)
+@missions_router.get("/{mission_uuid}/", response_model=MissionReadSchema)
 def get_mission_by_id(
     mission_uuid: uuid.UUID,
     service: MissionService = Depends(get_mission_service),
@@ -96,7 +96,7 @@ def update_notes_of_target(
     mission_service.get_mission_by_uuid(
         mission_uuid=mission_uuid
     )  # just check that mission exists
-    target_service.update_notes(target_uuid=target_uuid, notes=notes)
+    target_service.update_notes(target_uuid=target_uuid, notes=notes.model_dump(exclude_none=True))
     return mission_service.get_mission_by_uuid(mission_uuid=mission_uuid)
 
 

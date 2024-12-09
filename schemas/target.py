@@ -21,7 +21,7 @@ class TargetReadSchema(BaseModel):
 
 
 class TargetUpdateSchema(BaseModel):
-    name: Optional[str]
-    country: Optional[str]
+    name: Optional[str] = None
+    country: Optional[str] = None
     notes: Optional[str]
     complete: Optional[bool] = None

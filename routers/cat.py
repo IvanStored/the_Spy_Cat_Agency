@@ -27,14 +27,14 @@ async def list_all_cats(service: CatService = Depends(get_cat_service)):
     return CatListSchema(cats=[CatReadSchema(**cat.__dict__) for cat in cats])
 
 
-@cats_router.get("/{uuid_}/", response_model=CatReadSchema)
+@cats_router.get("/{cat_uuid}", response_model=CatReadSchema)
 async def get_cat_by_uuid(
     cat_uuid: uuid.UUID, service: CatService = Depends(get_cat_service)
 ):
     return service.get_cat_by_uuid(cat_uuid=cat_uuid)
 
 
-@cats_router.patch("/update_salary/{uuid_}", response_model=CatReadSchema)
+@cats_router.patch("/update_salary/{cat_uuid}", response_model=CatReadSchema)
 async def update_info(
     cat_uuid: uuid.UUID,
     new_data: CatUpdateSchema,
@@ -45,7 +45,7 @@ async def update_info(
     )
 
 
-@cats_router.delete("/delete_cat/{uuid_}", response_model=CatReadSchema)
+@cats_router.delete("/delete_cat/{cat_uuid}", response_model=CatReadSchema)
 async def delete_cat(
     cat_uuid: uuid.UUID, service: CatService = Depends(get_cat_service)
 ):
